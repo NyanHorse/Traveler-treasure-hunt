@@ -4,6 +4,13 @@ Traveler Treasure Hunt
 
 ## Setup
 
+run `createdb game` to create your database
+run `node databases.js` to create your tables
+run `yarn`
+run `yarn start`
+run `yarn development`
+run `yarn start`
+
 ## Technical Design
 
 ### User Flow
