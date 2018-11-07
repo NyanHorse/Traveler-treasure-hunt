@@ -17,22 +17,36 @@ class App extends React.Component {
       input: e.target.value
     });
   }
-  // addEmail() {
-  //   e.preventDefault();
-  //   fetch("", {
-  //     method: "POST",
-  //     body: JSON.stringify({ email: this.state.input }),
-  //     headers: { "Content-Type": "application/json" }
-  //   })
-  //     .then(res => res.json())
-  //     .then(json => {
-  //     })
-  //     .catch(error => {
-  //       this.setState({
-  //         error: true
-  //       });
-  //     });
-  // }
+
+  //i'm not sure what componentDidMount does, as it' s never alled
+  componentDidMount() {
+    fetch("http://localhost:3000/api/v1/game")
+      .then(res => res.json())
+      .then(json => {
+        this.setState({});
+      })
+      .catch(error => {
+        this.setState({
+          error: true
+        });
+      });
+  }
+
+  addEmail() {
+    e.preventDefault();
+    fetch("http://localhost:3000/api/v1/game", {
+      method: "POST",
+      body: JSON.stringify({ email: this.state.input }),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(res => res.json())
+      // .then(json => {})
+      .catch(error => {
+        this.setState({
+          error: true
+        });
+      });
+  }
 
   render() {
     return (
@@ -59,7 +73,7 @@ class App extends React.Component {
             />
           </label>
           <div>
-            <button onClick={() => addEmail()}>start</button>
+            <button onClick={e => this.addEmail(e)}>start</button>
           </div>
         </form>
       </div>
