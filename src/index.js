@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import TaskOne from "../views/task_one";
 require("./style.css");
 
 class App extends React.Component {
