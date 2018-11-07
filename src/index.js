@@ -18,13 +18,9 @@ class App extends React.Component {
     });
   }
 
-  //i'm not sure what componentDidMount does, as it' s never alled
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/game")
       .then(res => res.json())
-      .then(json => {
-        this.setState({});
-      })
       .catch(error => {
         this.setState({
           error: true
@@ -32,7 +28,7 @@ class App extends React.Component {
       });
   }
 
-  addEmail() {
+  addEmail(e) {
     e.preventDefault();
     fetch("http://localhost:3000/api/v1/game", {
       method: "POST",
@@ -40,7 +36,6 @@ class App extends React.Component {
       headers: { "Content-Type": "application/json" }
     })
       .then(res => res.json())
-      // .then(json => {})
       .catch(error => {
         this.setState({
           error: true
@@ -49,6 +44,10 @@ class App extends React.Component {
   }
 
   render() {
+    let error = null;
+    if (this.state.error) {
+      error = <h2>error</h2>;
+    }
     return (
       <div>
         <h1>Traveler treasure hunt</h1>
@@ -76,6 +75,7 @@ class App extends React.Component {
             <button onClick={e => this.addEmail(e)}>start</button>
           </div>
         </form>
+        <div>{error}</div>
       </div>
     );
   }
