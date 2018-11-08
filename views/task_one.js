@@ -9,7 +9,11 @@ class TaskOne extends React.Component {
   //methods
 
   render() {
-    return <div />;
+    return (
+      <div>
+        <h3>this is task one</h3>
+      </div>
+    );
   }
 }
 export default TaskOne;

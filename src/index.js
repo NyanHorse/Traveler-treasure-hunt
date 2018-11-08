@@ -8,7 +8,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       input: "",
-      error: false
+      error: false,
+      task: false
     };
   }
 
@@ -34,7 +35,9 @@ class App extends React.Component {
       body: JSON.stringify({ email: this.state.input }),
       headers: { "Content-Type": "application/json" }
     })
-      .then(res => res.json())
+      .then(res => {
+        this.setState({ task: true });
+      })
       .catch(error => {
         this.setState({ error: true });
       });
@@ -45,36 +48,41 @@ class App extends React.Component {
     if (this.state.error) {
       error = <h2>error</h2>;
     }
-    return (
-      <div>
-        <h1>Traveler treasure hunt</h1>
-        <p>
-          Game rules lalala Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Vitae justo eget magna fermentum iaculis. Nunc sed id semper
-          risus in hendrerit. Dui sapien eget mi proin. Arcu risus quis varius
-          quam. Id faucibus nisl tincidunt eget nullam non. Nisl condimentum id
-          venenatis a condimentum. Malesuada pellentesque elit eget gravida cum
-          sociis natoque. Adipiscing elit pellentesque habitant morbi tristique
-          senectus. Aliquam vestibulum morbi blandit cursus risus. Ultrices
-          vitae.
-        </p>
-        <form>
-          <label>
-            <input
-              type="email"
-              onChange={e => this.updateInput(e)}
-              placeholder="enter email here"
-              required
-            />
-          </label>
-          <div>
-            <button onClick={e => this.addEmail(e)}>start</button>
-          </div>
-        </form>
-        <div>{error}</div>
-      </div>
-    );
+
+    if (this.state.task) {
+      return <TaskOne />;
+    } else {
+      return (
+        <div>
+          <h1>Traveler treasure hunt</h1>
+          <p>
+            Game rules lalala Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Vitae justo eget magna fermentum iaculis. Nunc sed id semper
+            risus in hendrerit. Dui sapien eget mi proin. Arcu risus quis varius
+            quam. Id faucibus nisl tincidunt eget nullam non. Nisl condimentum
+            id venenatis a condimentum. Malesuada pellentesque elit eget gravida
+            cum sociis natoque. Adipiscing elit pellentesque habitant morbi
+            tristique senectus. Aliquam vestibulum morbi blandit cursus risus.
+            Ultrices vitae.
+          </p>
+          <form>
+            <label>
+              <input
+                type="email"
+                onChange={e => this.updateInput(e)}
+                placeholder="enter email here"
+                required
+              />
+            </label>
+            <div>
+              <button onClick={e => this.addEmail(e)}>start</button>
+            </div>
+          </form>
+          <div>{error}</div>
+        </div>
+      );
+    }
   }
 }
 
