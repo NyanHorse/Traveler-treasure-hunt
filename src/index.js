@@ -20,27 +20,23 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/game")
+    fetch("http://localhost:3000/api/v1/game/players")
       .then(res => res.json())
       .catch(error => {
-        this.setState({
-          error: true
-        });
+        this.setState({ error: true });
       });
   }
 
   addEmail(e) {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/game", {
+    fetch("http://localhost:3000/api/v1/game/players", {
       method: "POST",
       body: JSON.stringify({ email: this.state.input }),
       headers: { "Content-Type": "application/json" }
     })
       .then(res => res.json())
       .catch(error => {
-        this.setState({
-          error: true
-        });
+        this.setState({ error: true });
       });
   }
 
