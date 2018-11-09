@@ -31,4 +31,24 @@ router.post("/api/v1/game/players", (req, res, next) => {
   });
 });
 
+router.get("/api/v1/game/locations", (req, res, next) => {
+  db("SELECT * FROM locations;").then(results => {
+    if (results.error) {
+      res.status(404).send({ error: results.error });
+    } else {
+      res.send({ body: results.data });
+    }
+  });
+});
+
+router.get("/api/v1/game/questions", (req, res, next) => {
+  db("SELECT * FROM questions;").then(results => {
+    if (results.error) {
+      res.status(404).send({ error: results.error });
+    } else {
+      res.send({ body: results.data });
+    }
+  });
+});
+
 module.exports = router;
