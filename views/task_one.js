@@ -15,6 +15,7 @@ class TaskOne extends React.Component {
   }
 
   render() {
+    console.log(json.body.poi);
     let error = null;
     if (this.state.error) {
       error = <h2>error</h2>;

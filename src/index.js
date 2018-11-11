@@ -50,11 +50,14 @@ class App extends React.Component {
 
     fetch("http://localhost:3000/api/v1/players", {
       method: "PATCH",
-      body: JSON.stringify({ email: this.state.email, start: timestampEl }),
+      body: JSON.stringify({
+        email: this.state.email,
+        start_time: timestampEl
+      }),
       headers: { "Content-Type": "application/json" }
     })
       .then(res => {
-        console.log("Start time is set");
+        this.setState({ time: true });
       })
       .catch(error => {
         this.setState({ error: true });
