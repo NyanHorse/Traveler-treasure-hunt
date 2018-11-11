@@ -31,6 +31,20 @@ router.post("/api/v1/game/players", (req, res, next) => {
   });
 });
 
+router.patch("/api/v1/game/players", (req, res, next) => {
+  db(
+    `UPDATE players SET start_time = '${req.body.start}' WHERE email = '${
+      req.body.email
+    }'`
+  ).then(results => {
+    if (results.error) {
+      res.status(404).send({ error: results.error });
+    } else {
+      res.send({ body: results.data });
+    }
+  });
+});
+
 router.get("/api/v1/game/locations", (req, res, next) => {
   db("SELECT * FROM locations;").then(results => {
     if (results.error) {

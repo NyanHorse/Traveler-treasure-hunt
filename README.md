@@ -9,6 +9,8 @@ run `node databases.js` to create your tables
 run `yarn`
 run `yarn start`
 run `yarn development`
+run `node dataquestions.js` to fill table with information
+run `node datalocations.js` to fill table with information
 
 ## Technical Design
 

@@ -9,7 +9,8 @@ class App extends React.Component {
     this.state = {
       input: "",
       error: false,
-      task: false
+      task: false,
+      email: ""
     };
   }
 
@@ -36,7 +37,24 @@ class App extends React.Component {
       headers: { "Content-Type": "application/json" }
     })
       .then(res => {
-        this.setState({ task: true });
+        this.setState({ task: true, email: this.state.input });
+      })
+      .catch(error => {
+        this.setState({ error: true });
+      });
+  }
+
+  startTime() {
+    let date = new Date();
+    let timestampEl = date.toLocaleString();
+
+    fetch("http://localhost:3000/api/v1/players", {
+      method: "PATCH",
+      body: JSON.stringify({ email: this.state.email, start: timestampEl }),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(res => {
+        console.log("Start time is set");
       })
       .catch(error => {
         this.setState({ error: true });
@@ -76,7 +94,14 @@ class App extends React.Component {
               />
             </label>
             <div>
-              <button onClick={e => this.addEmail(e)}>start</button>
+              <button
+                onClick={e => {
+                  this.addEmail(e);
+                  this.startTime();
+                }}
+              >
+                start
+              </button>
             </div>
           </form>
           <div>{error}</div>
