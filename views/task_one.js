@@ -9,26 +9,39 @@ class TaskOne extends React.Component {
       error: false,
       poi: "",
       details: "",
-      question: null,
+      question: "",
       lat: "",
-      lng: ""
+      lng: "",
+      op1: "",
+      op2: "",
+      op3: ""
     };
   }
-  // componentDidMount() {
-  //   fetch("http://localhost:3000/api/v1/game/locations")
-  //     .then(res => {})
-  //     .catch(error => {
-  //       this.setState({ error: true });
-  //     });
-  // }
+  componentDidMount() {
+    fetch("http://localhost:3000/api/v1/game/locations")
+      .then(res => {})
+      .catch(error => {
+        this.setState({ error: true });
+      });
+  }
   getTasks() {
-    fetch("/api/v1/game/tasks")
-    .then(res => {
-
+    fetch("/api/v1/game/tasks", {
+      method: "GET"
     })
-    .catch(error => {
-      this.setState({ error: true });
-    });
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          poi: json.body.poi,
+          details: json.body.details,
+          question: json.body.question,
+          op1: json.body.answer_one,
+          op2: json.body.answer_two,
+          op3: json.body.answer_three
+        });
+      })
+      .catch(error => {
+        this.setState({ error: true });
+      });
   }
 
   render() {
@@ -40,14 +53,14 @@ class TaskOne extends React.Component {
       <div>
         <h3>this is task one</h3>
         <div id="maphere" />
-        <button onClick={}>I'm here</button>
+        <button>I'm here</button>
         <div id="task">
-          <p>question</p>
-          <button className="options">Option 1</button>
-          <button className="options">Option 1</button>
-          <button className="options">Option 1</button>
+          <p>{this.state.question}</p>
         </div>
         {error}
+        <button>{this.state.op1}</button>
+        <button>{this.state.op2}</button>
+        <button>{this.state.op3}</button>
       </div>
     );
   }

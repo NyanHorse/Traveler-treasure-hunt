@@ -66,7 +66,7 @@ router.get("/api/v1/game/questions", (req, res, next) => {
 
 router.get("/api/v1/game/tasks", (req, res, next) => {
   db(
-    "SELECT poi, details, question, answer_one, answer_two, answer_three FROM locations, questions WHERE question_id IS NOT NULL;"
+    "SELECT poi, details, question, answer_one, answer_two, answer_three FROM locations, questions WHERE question_id = 1;"
   ).then(results => {
     if (results.error) {
       res.status(404).send({ error: results.error });
