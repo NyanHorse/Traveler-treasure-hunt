@@ -5,17 +5,33 @@ import TaskTwo from "../views/task_two";
 class TaskOne extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      error: false,
+      poi: "",
+      details: "",
+      question: null,
+      lat: "",
+      lng: ""
+    };
   }
-  componentDidMount() {
-    fetch("http://localhost:3000/api/v1/game/locations")
-      .then(res => res.json())
-      .catch(error => {
-        this.setState({ error: true });
-      });
+  // componentDidMount() {
+  //   fetch("http://localhost:3000/api/v1/game/locations")
+  //     .then(res => {})
+  //     .catch(error => {
+  //       this.setState({ error: true });
+  //     });
+  // }
+  getTasks() {
+    fetch("/api/v1/game/tasks")
+    .then(res => {
+
+    })
+    .catch(error => {
+      this.setState({ error: true });
+    });
   }
 
   render() {
-    console.log(json.body.poi);
     let error = null;
     if (this.state.error) {
       error = <h2>error</h2>;
@@ -24,7 +40,7 @@ class TaskOne extends React.Component {
       <div>
         <h3>this is task one</h3>
         <div id="maphere" />
-        <button>I'm here</button>
+        <button onClick={}>I'm here</button>
         <div id="task">
           <p>question</p>
           <button className="options">Option 1</button>

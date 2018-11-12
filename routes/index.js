@@ -19,7 +19,6 @@ router.get("/api/v1/game/players", (req, res, next) => {
 });
 
 router.post("/api/v1/game/players", (req, res, next) => {
-  console.log(req.body);
   db(
     `INSERT INTO players (email) VALUES ('${req.body.email}') RETURNING *;`
   ).then(results => {
@@ -33,7 +32,7 @@ router.post("/api/v1/game/players", (req, res, next) => {
 
 router.patch("/api/v1/game/players", (req, res, next) => {
   db(
-    `UPDATE players SET start_time = '${req.body.start}' WHERE email = '${
+    `UPDATE players SET start_time = LOCALTIMESTAMP WHERE email = '${
       req.body.email
     }'`
   ).then(results => {
@@ -57,6 +56,18 @@ router.get("/api/v1/game/locations", (req, res, next) => {
 
 router.get("/api/v1/game/questions", (req, res, next) => {
   db("SELECT * FROM questions;").then(results => {
+    if (results.error) {
+      res.status(404).send({ error: results.error });
+    } else {
+      res.send({ body: results.data });
+    }
+  });
+});
+
+router.get("/api/v1/game/tasks", (req, res, next) => {
+  db(
+    "SELECT poi, details, question, answer_one, answer_two, answer_three FROM locations, questions WHERE question_id IS NOT NULL;"
+  ).then(results => {
     if (results.error) {
       res.status(404).send({ error: results.error });
     } else {

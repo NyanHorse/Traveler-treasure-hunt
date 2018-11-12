@@ -10,7 +10,8 @@ class App extends React.Component {
       input: "",
       error: false,
       task: false,
-      email: ""
+      email: "",
+      success: false
     };
   }
 
@@ -21,13 +22,13 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    fetch("http://localhost:3000/api/v1/game/players")
-      .then(res => res.json())
-      .catch(error => {
-        this.setState({ error: true });
-      });
-  }
+  // componentDidMount() {
+  //   fetch("http://localhost:3000/api/v1/game/players")
+  //     .then(res => res.json())
+  //     .catch(error => {
+  //       this.setState({ error: true });
+  //     });
+  // }
 
   addEmail(e) {
     e.preventDefault();
@@ -45,26 +46,22 @@ class App extends React.Component {
   }
 
   startTime() {
-    let date = new Date();
-    let timestampEl = date.toLocaleString();
-
-    fetch("http://localhost:3000/api/v1/players", {
+    fetch("http://localhost:3000/api/v1/game/players", {
       method: "PATCH",
       body: JSON.stringify({
-        email: this.state.email,
-        start_time: timestampEl
+        email: this.state.email
       }),
       headers: { "Content-Type": "application/json" }
     })
-      .then(res => {
-        this.setState({ time: true });
-      })
+      .then(res => this.setState({ success: true }))
       .catch(error => {
         this.setState({ error: true });
       });
+    console.log(this.state.success, "time count has started");
   }
 
   render() {
+    console.log(this.state.success);
     let error = null;
     if (this.state.error) {
       error = <h2>error</h2>;
