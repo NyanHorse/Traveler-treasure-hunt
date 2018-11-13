@@ -1,4 +1,11 @@
 h3 {
   color: whitesmoke;
-  background-color: darkolivegreen;
+  background-color: salmon;
+}
+.mapHere {
+  display: block;
+  width: 60%;
+  height: 40%;
+  background-color: lightsalmon;
+  margin: auto;
 }

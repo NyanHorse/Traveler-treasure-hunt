@@ -7,39 +7,43 @@ class TaskOne extends React.Component {
     super(props);
     this.state = {
       error: false,
-      lat: "",
-      lng: "",
-      loading: false,
+      lat: 41.403629,
+      lng: 2.174356,
       correct: false,
+      wrong: false,
       show: false
     };
   }
   correct() {
-    console.log(this.state.correct, "button clicked");
     this.setState({ correct: true });
   }
+
+  wrong() {
+    this.setState({ wrong: true });
+  }
+
   showQuestion() {
     this.setState({ show: true });
   }
-  //   if(!arrived) {
-  //     show "this is task one"
-  //   } else {
-  //   if (!answer) {
-  //     show question
-  //   } else {
-  //     show next task
-  //   }
-  // }
 
   render() {
+    let wrongMsg = null;
+    if (this.state.wrong) {
+      wrongMsg = <h2>Wrong answer, try again!</h2>;
+    }
     if (!this.state.correct) {
       if (!this.state.show) {
         return (
           <div>
             <h3>this is task one</h3>
             <div>
-              <h1>map here</h1>
-              <button id="here" onClick={() => this.showQuestion()}>
+              <div className="mapHere">
+                <p>
+                  On map latitude is {this.state.lat}, longitude is{" "}
+                  {this.state.lng}.
+                </p>
+              </div>
+              <button className="here" onClick={() => this.showQuestion()}>
                 I'm here
               </button>
             </div>
@@ -47,7 +51,7 @@ class TaskOne extends React.Component {
         );
       } else {
         return (
-          <div id="hidden">
+          <div className="task">
             <p>
               The Sagrada Familia is a large Roman Catholic church designed by
               Antoni Gaudí who worked on it until his death in 1926. Building of
@@ -63,12 +67,17 @@ class TaskOne extends React.Component {
                   How much of the building was finished when Gaudi passed away?
                 </h2>
               </div>
-              <button className="options">Halfway finished</button>
-              <button className="options">About 10 percent</button>
+              <button className="options" onClick={() => this.wrong()}>
+                Halfway finished
+              </button>
+              <button className="options" onClick={() => this.wrong()}>
+                About 10 percent
+              </button>
               <button className="options" onClick={() => this.correct()}>
                 Less than quarter
               </button>
             </div>
+            <div>{wrongMsg}</div>
           </div>
         );
       }
