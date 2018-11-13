@@ -10,25 +10,44 @@ class TaskOne extends React.Component {
       lat: "",
       lng: "",
       loading: false,
-      correct: false
+      correct: false,
+      show: false
     };
   }
   correct() {
+    console.log(this.state.correct, "button clicked");
     this.setState({ correct: true });
   }
+  showQuestion() {
+    this.setState({ show: true });
+  }
+  //   if(!arrived) {
+  //     show "this is task one"
+  //   } else {
+  //   if (!answer) {
+  //     show question
+  //   } else {
+  //     show next task
+  //   }
+  // }
 
   render() {
-    if (this.state.correct) {
-      return <TaskTwo />;
-    } else {
-      return (
-        <div>
-          <h3>this is task one</h3>
+    if (!this.state.correct) {
+      if (!this.state.show) {
+        return (
           <div>
-            <h1>map here</h1>
-            <button id="here">I'm here</button>
+            <h3>this is task one</h3>
+            <div>
+              <h1>map here</h1>
+              <button id="here" onClick={() => this.showQuestion()}>
+                I'm here
+              </button>
+            </div>
           </div>
-          <div>
+        );
+      } else {
+        return (
+          <div id="hidden">
             <p>
               The Sagrada Familia is a large Roman Catholic church designed by
               Antoni Gaudí who worked on it until his death in 1926. Building of
@@ -38,7 +57,7 @@ class TaskOne extends React.Component {
               1950s. The expected finish date of 2026–100 years after Gaudí's
               death.
             </p>
-            <div id="hidden">
+            <div>
               <div>
                 <h2 className="question">
                   How much of the building was finished when Gaudi passed away?
@@ -51,8 +70,10 @@ class TaskOne extends React.Component {
               </button>
             </div>
           </div>
-        </div>
-      );
+        );
+      }
+    } else {
+      return <TaskTwo />;
     }
   }
 }
