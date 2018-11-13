@@ -7,62 +7,53 @@ class TaskOne extends React.Component {
     super(props);
     this.state = {
       error: false,
-      poi: "",
-      details: "",
-      question: "",
       lat: "",
       lng: "",
-      op1: "",
-      op2: "",
-      op3: ""
+      loading: false,
+      correct: false
     };
   }
-  componentDidMount() {
-    fetch("http://localhost:3000/api/v1/game/locations")
-      .then(res => {})
-      .catch(error => {
-        this.setState({ error: true });
-      });
-  }
-  getTasks() {
-    fetch("/api/v1/game/tasks", {
-      method: "GET"
-    })
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          poi: json.body.poi,
-          details: json.body.details,
-          question: json.body.question,
-          op1: json.body.answer_one,
-          op2: json.body.answer_two,
-          op3: json.body.answer_three
-        });
-      })
-      .catch(error => {
-        this.setState({ error: true });
-      });
+  correct() {
+    this.setState({ correct: true });
   }
 
   render() {
-    let error = null;
-    if (this.state.error) {
-      error = <h2>error</h2>;
-    }
-    return (
-      <div>
-        <h3>this is task one</h3>
-        <div id="maphere" />
-        <button>I'm here</button>
-        <div id="task">
-          <p>{this.state.question}</p>
+    if (this.state.correct) {
+      return <TaskTwo />;
+    } else {
+      return (
+        <div>
+          <h3>this is task one</h3>
+          <div>
+            <h1>map here</h1>
+            <button id="here">I'm here</button>
+          </div>
+          <div>
+            <p>
+              The Sagrada Familia is a large Roman Catholic church designed by
+              Antoni Gaudí who worked on it until his death in 1926. Building of
+              the Sagrada Família began in 1882, relying solely on private
+              donations construction progressed slowly and was interrupted by
+              the Spanish Civil War, only to resume intermittent progress in the
+              1950s. The expected finish date of 2026–100 years after Gaudí's
+              death.
+            </p>
+            <div id="hidden">
+              <div>
+                <h2 className="question">
+                  How much of the building was finished when Gaudi passed away?
+                </h2>
+              </div>
+              <button className="options">Halfway finished</button>
+              <button className="options">About 10 percent</button>
+              <button className="options" onClick={() => this.correct()}>
+                Less than quarter
+              </button>
+            </div>
+          </div>
         </div>
-        {error}
-        <button>{this.state.op1}</button>
-        <button>{this.state.op2}</button>
-        <button>{this.state.op3}</button>
-      </div>
-    );
+      );
+    }
   }
 }
 export default TaskOne;
