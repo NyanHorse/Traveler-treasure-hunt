@@ -11,7 +11,8 @@ class App extends React.Component {
       error: false,
       task: false,
       email: "",
-      success: false
+      success: false,
+      time: null
     };
   }
 
@@ -22,13 +23,16 @@ class App extends React.Component {
   }
 
   addEmail(e) {
+    let currentTime = new Date().toString();
     this.setState({
       task: true,
-      email: this.state.input
+      email: this.state.input,
+      time: currentTime
     });
   }
 
   render() {
+    console.log("Game has started at", this.state.time);
     if (this.state.task) {
       return <TaskOne />;
     } else {
