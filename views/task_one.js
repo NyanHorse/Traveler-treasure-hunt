@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import TaskTwo from "../views/task_two";
+//this is for frontend map
 // import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 class TaskOne extends React.Component {
@@ -28,6 +29,7 @@ class TaskOne extends React.Component {
   }
 
   render() {
+    //this is for frontend map
     // let MyMapComponent = props => (
     //   <GoogleMap defaultZoom={8} defaultCenter={{ lat: 41.403, lng: 2.174 }}>
     //     {props.isMarkerShown && (
@@ -46,7 +48,7 @@ class TaskOne extends React.Component {
             <h3>this is task one</h3>
             <div>
               <div className="mapHere">
-                {/* <MyMapComponent isMarkerShown /> */}
+                {/*this is for frontend map -----> <MyMapComponent isMarkerShown /> */}
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
                 I'm here
