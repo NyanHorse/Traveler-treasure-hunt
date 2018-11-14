@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import TaskTwo from "../views/task_two";
+// import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 class TaskOne extends React.Component {
   constructor(props) {
@@ -27,6 +28,13 @@ class TaskOne extends React.Component {
   }
 
   render() {
+    // let MyMapComponent = props => (
+    //   <GoogleMap defaultZoom={8} defaultCenter={{ lat: 41.403, lng: 2.174 }}>
+    //     {props.isMarkerShown && (
+    //       <Marker position={{ lat: 41.403, lng: 2.174 }} />
+    //     )}
+    //   </GoogleMap>
+    // );
     let wrongMsg = null;
     if (this.state.wrong) {
       wrongMsg = <h2>Wrong answer, try again!</h2>;
@@ -38,10 +46,7 @@ class TaskOne extends React.Component {
             <h3>this is task one</h3>
             <div>
               <div className="mapHere">
-                <p>
-                  On map latitude is {this.state.lat}, longitude is{" "}
-                  {this.state.lng}.
-                </p>
+                {/* <MyMapComponent isMarkerShown /> */}
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
                 I'm here

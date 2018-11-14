@@ -11,11 +11,14 @@ class Finished extends React.Component {
       lng: 2.14861,
       correct: false,
       wrong: false,
-      show: false
+      show: false,
+      time: null
     };
   }
+
   correct() {
-    this.setState({ correct: true });
+    let currentTime = new Date().toString();
+    this.setState({ correct: true, time: currentTime });
   }
 
   wrong() {
@@ -27,6 +30,7 @@ class Finished extends React.Component {
   }
 
   render() {
+    console.log("finishing time is", this.state.time);
     let wrongMsg = null;
     if (this.state.wrong) {
       wrongMsg = <h2>Wrong answer, try again!</h2>;

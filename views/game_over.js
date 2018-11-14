@@ -13,6 +13,7 @@ class GameOver extends React.Component {
     return (
       <div>
         <h1>Congratulations!</h1>
+        <h2>You' ve found the treasure chest</h2>
         <img
           src="https://cdn.dribbble.com/users/484196/screenshots/2330260/treasure.gif"
           alt="treasure box"
@@ -21,4 +22,4 @@ class GameOver extends React.Component {
     );
   }
 }
-export default Finished;
+export default GameOver;
