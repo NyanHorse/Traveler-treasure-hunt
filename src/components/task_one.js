@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import TaskTwo from "./task_two";
-//this is for frontend map
-// import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import Map from "./mapbox.js";
 
 class TaskOne extends React.Component {
   constructor(props) {
@@ -48,7 +46,7 @@ class TaskOne extends React.Component {
             <h3>this is task one</h3>
             <div>
               <div className="mapHere">
-                {/*this is for frontend map -----> <MyMapComponent isMarkerShown /> */}
+                <Map latitude={this.state.lat} longitude={this.state.lng} />
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
                 I'm here

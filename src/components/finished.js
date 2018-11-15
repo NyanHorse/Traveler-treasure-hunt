@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import Map from "./mapbox.js";
 import GameOver from "./game_over";
 
 class Finished extends React.Component {
@@ -41,11 +41,8 @@ class Finished extends React.Component {
           <div>
             <h3>this is task four</h3>
             <div>
-              <div className="mapHere">
-                <p>
-                  On map latitude is {this.state.lat}, longitude is{" "}
-                  {this.state.lng}.
-                </p>
+            <div className="mapHere">
+                <Map latitude={this.state.lat} longitude={this.state.lng} />
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
                 I'm here

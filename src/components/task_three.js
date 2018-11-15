@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import Map from "./mapbox.js";
 import Finished from "./finished";
 
 class TaskThree extends React.Component {
@@ -38,11 +38,8 @@ class TaskThree extends React.Component {
             <h3>this is task three</h3>
             <div>
               <div className="mapHere">
-                <p>
-                  On map latitude is {this.state.lat}, longitude is{" "}
-                  {this.state.lng}.
-                </p>
-              </div>
+                <Map latitude={this.state.lat} longitude={this.state.lng} />
+              </div>              
               <button className="here" onClick={() => this.showQuestion()}>
                 I'm here
               </button>
