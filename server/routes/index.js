@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const db = require("./server/routes/helper");
+const db = require("./helper");
 require("dotenv").config();
 
 router.get("/", (req, res, next) => {

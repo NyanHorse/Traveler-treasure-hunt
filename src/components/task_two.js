@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import TaskThree from "./task_three.js";
-import MyMapComponent from "./map.js";
 
 
 class TaskTwo extends React.Component {
@@ -40,7 +39,7 @@ class TaskTwo extends React.Component {
             <h3>this is task two</h3>
             <div>
               <div className="mapHere">
-               <MyMapComponent latitude={this.state.lat} longitude={this.state.lng}/>
+              
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
                 I'm here
