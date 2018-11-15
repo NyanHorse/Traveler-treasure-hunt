@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TaskThree from "../views/task_three";
+import Finished from "./finished";
 
-class TaskTwo extends React.Component {
+class TaskThree extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: false,
-      lat: 41.412473,
-      lng: 2.174298,
+      lat: 41.41666,
+      lng: 2.18166,
       correct: false,
       wrong: false,
       show: false
@@ -35,7 +35,7 @@ class TaskTwo extends React.Component {
       if (!this.state.show) {
         return (
           <div>
-            <h3>this is task two</h3>
+            <h3>this is task three</h3>
             <div>
               <div className="mapHere">
                 <p>
@@ -53,27 +53,29 @@ class TaskTwo extends React.Component {
         return (
           <div className="task">
             <p>
-              Hospital de Sant Pau was a fully functioning hospital until June
-              2009, when the new hospital opened next to it, before undergoing
-              restoration for use as a museum and cultural center, which opened
-              in 2014. Although the hospital's current buildings date from the
-              20th century, the Hospital de la Santa Creu was founded in 1401
-              when six small medieval hospitals merged.
+              Bunkers del Carmel were built during the Spanish Civil War in
+              1937. When Franco came to power and the Civil War was over, the
+              guns were retired, but the bunkers remained. Due rising problems
+              of poverty, locals saw the bunkers as forms of housing and
+              shelter. In 1950's there were around 3000 inhabitants. The
+              neighborhood and many of its residents remained all the way up
+              until the 1990s.
             </p>
             <div>
               <div>
                 <h2 className="question">
-                  Who paid for the building of this hospital?
+                  Why did Barcelona City Council decide to rehouse bunkers
+                  residents in early 90's?
                 </h2>
               </div>
               <button className="options" onClick={() => this.wrong()}>
-                Spanish government
+                Because of a tunnel construction accident
               </button>
               <button className="options" onClick={() => this.correct()}>
-                banker Pau Gil
+                Because of Olympic Games
               </button>
               <button className="options" onClick={() => this.wrong()}>
-                donations from citizens
+                Because of inhumane living conditions
               </button>
             </div>
             <div>{wrongMsg}</div>
@@ -81,8 +83,8 @@ class TaskTwo extends React.Component {
         );
       }
     } else {
-      return <TaskThree />;
+      return <Finished />;
     }
   }
 }
-export default TaskTwo;
+export default TaskThree;

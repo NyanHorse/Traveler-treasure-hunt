@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GameOver from "../views/game_over";
+import GameOver from "./game_over";
 
 class Finished extends React.Component {
   constructor(props) {

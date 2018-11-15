@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TaskTwo from "../views/task_two";
+import TaskTwo from "./task_two";
 //this is for frontend map
 // import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
