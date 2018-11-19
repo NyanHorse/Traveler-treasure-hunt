@@ -36,9 +36,10 @@ class TaskTwo extends React.Component {
       if (!this.state.show) {
         return (
           <div>
+            <div className="title"></div>
             <h3>this is task two</h3>
             <div>
-              <div className="mapHere">
+              <div className="mapp">
                 <Map latitude={this.state.lat} longitude={this.state.lng} />
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
@@ -50,6 +51,8 @@ class TaskTwo extends React.Component {
       } else {
         return (
           <div className="task">
+            <img src="../src/assets/2.jpg" ></img>
+            <div className="paper">
             <p>
               Hospital de Sant Pau was a fully functioning hospital until June
               2009, when the new hospital opened next to it, before undergoing
@@ -57,7 +60,7 @@ class TaskTwo extends React.Component {
               in 2014. Although the hospital's current buildings date from the
               20th century, the Hospital de la Santa Creu was founded in 1401
               when six small medieval hospitals merged.
-            </p>
+            </p></div>
             <div>
               <div>
                 <h2 className="question">

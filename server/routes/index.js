@@ -20,7 +20,7 @@ router.get("/api/v1/game/players", (req, res, next) => {
 
 router.post("/api/v1/game/players", (req, res, next) => {
   db(
-    `INSERT INTO players (email) VALUES ('${req.body.email}') RETURNING *;`
+    `INSERT INTO players (email, start_time) VALUES ('${req.body.email}', ${req.body.time}) RETURNING *;`
   ).then(results => {
     if (results.error) {
       res.status(404).send({ error: results.error });

@@ -39,9 +39,11 @@ class Finished extends React.Component {
       if (!this.state.show) {
         return (
           <div>
+            <div className="title">
             <h3>this is task four</h3>
+            </div>
             <div>
-            <div className="mapHere">
+            <div className="mapp">
                 <Map latitude={this.state.lat} longitude={this.state.lng} />
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
@@ -53,6 +55,8 @@ class Finished extends React.Component {
       } else {
         return (
           <div className="task">
+            <img src="../src/assets/4.jpg" ></img>
+            <div className="paper">
             <p>
               Park Güell is named after businessman Eusebi Güell, who's the
               author of the project and English garden city movement, hense the
@@ -62,7 +66,7 @@ class Finished extends React.Component {
               complex, one was intended to be a show house, other one was Gaui's
               house where he lived with hos family from 1906 to 1926. It is now
               the Gaudi House Museum since 1963.
-            </p>
+            </p></div>
             <div>
               <div>
                 <h2 className="question">

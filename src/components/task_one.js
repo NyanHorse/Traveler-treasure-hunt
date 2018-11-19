@@ -27,14 +27,6 @@ class TaskOne extends React.Component {
   }
 
   render() {
-    //this is for frontend map
-    // let MyMapComponent = props => (
-    //   <GoogleMap defaultZoom={8} defaultCenter={{ lat: 41.403, lng: 2.174 }}>
-    //     {props.isMarkerShown && (
-    //       <Marker position={{ lat: 41.403, lng: 2.174 }} />
-    //     )}
-    //   </GoogleMap>
-    // );
     let wrongMsg = null;
     if (this.state.wrong) {
       wrongMsg = <h2>Wrong answer, try again!</h2>;
@@ -43,9 +35,11 @@ class TaskOne extends React.Component {
       if (!this.state.show) {
         return (
           <div>
-            <h3>this is task one</h3>
+            <div className="title">
+            <h3>This is task one</h3>
+            </div>
             <div>
-              <div className="mapHere">
+              <div className="mapp">
                 <Map latitude={this.state.lat} longitude={this.state.lng} />
               </div>
               <button className="here" onClick={() => this.showQuestion()}>
@@ -57,6 +51,8 @@ class TaskOne extends React.Component {
       } else {
         return (
           <div className="task">
+            <img src="../src/assets/1.jpg" ></img>
+            <div className="paper">
             <p>
               The Sagrada Familia is a large Roman Catholic church designed by
               Antoni Gaudí who worked on it until his death in 1926. Building of
@@ -82,7 +78,7 @@ class TaskOne extends React.Component {
                 Less than quarter
               </button>
             </div>
-            <div>{wrongMsg}</div>
+            <div>{wrongMsg}</div></div>
           </div>
         );
       }

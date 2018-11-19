@@ -35,9 +35,10 @@ class TaskThree extends React.Component {
       if (!this.state.show) {
         return (
           <div>
+            <div className="title"></div>
             <h3>this is task three</h3>
             <div>
-              <div className="mapHere">
+              <div className="mapp">
                 <Map latitude={this.state.lat} longitude={this.state.lng} />
               </div>              
               <button className="here" onClick={() => this.showQuestion()}>
@@ -49,6 +50,8 @@ class TaskThree extends React.Component {
       } else {
         return (
           <div className="task">
+            <img src="../src/assets/3.jpg" ></img>
+            <div className="paper">
             <p>
               Bunkers del Carmel were built during the Spanish Civil War in
               1937. When Franco came to power and the Civil War was over, the
@@ -57,7 +60,7 @@ class TaskThree extends React.Component {
               shelter. In 1950's there were around 3000 inhabitants. The
               neighborhood and many of its residents remained all the way up
               until the 1990s.
-            </p>
+            </p></div>
             <div>
               <div>
                 <h2 className="question">

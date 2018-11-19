@@ -1,5 +1,5 @@
 import React from "react";
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, {Marker} from 'react-map-gl';
 require("dotenv").config();
 
 class Map extends React.Component {
@@ -19,11 +19,15 @@ class Map extends React.Component {
   render() {
 
     return (
-      <ReactMapGL
+        <ReactMapGL
         {...this.state.viewport}
         mapboxApiAccessToken={process.env.MAPBOX_TOKKEN}
         onViewportChange={(viewport) => this.setState({viewport})}
-      />
+        >
+            <Marker latitude={this.props.latitude} longitude={this.props.longitude} offsetLeft={-20} offsetTop={-10}>
+            <i className="fas fa-map-marker"></i>
+            </Marker>
+        </ReactMapGL>
     );
   }
 }
